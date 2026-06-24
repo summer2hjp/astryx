@@ -28,6 +28,12 @@ import {Avatar} from '@astryxdesign/core/Avatar';
 import {AspectRatio} from '@astryxdesign/core/AspectRatio';
 import type {HeroThemeContent} from './heroThemeContent';
 
+// One recurring member across every theme slide (the per-theme `member` copy is
+// intentionally not used here).
+const CDN = 'https://lookaside.facebook.com/assets/astryx';
+const REWARD_MEMBER_NAME = 'Ami Pena';
+const REWARD_MEMBER_AVATAR = `${CDN}/DATA-Ami-Pena.png`;
+
 const styles = stylex.create({
   // Desktop overlap stage: fixed, viewport-centered 1200px box (shared with the
   // aurora blobs) so cards track the blobs on resize. Capped to 100vw to avoid
@@ -449,9 +455,13 @@ export function HeroFloatingCards({
             variant="accent"
           />
           <HStack gap={2} vAlign="center" xstyle={styles.profileRow}>
-            <Avatar name={content.reward.member} size="xsmall" />
+            <Avatar
+              src={REWARD_MEMBER_AVATAR}
+              name={REWARD_MEMBER_NAME}
+              size="xsmall"
+            />
             <Text type="supporting" color="secondary">
-              {content.reward.member}
+              {REWARD_MEMBER_NAME}
             </Text>
           </HStack>
         </VStack>
