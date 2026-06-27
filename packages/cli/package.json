@@ -42,6 +42,10 @@
     "./config": {
       "types": "./src/types/config.d.ts",
       "import": "./src/config.mjs"
+    },
+    "./xle": {
+      "types": "./src/lib/xle/browser.d.ts",
+      "import": "./src/lib/xle/browser.mjs"
     }
   },
   "files": [
@@ -66,7 +70,8 @@
   "peerDependencies": {
     "@astryxdesign/core": "*",
     "@astryxdesign/lab": "*",
-    "@astryxdesign/theme-neutral": "*"
+    "@astryxdesign/theme-neutral": "*",
+    "gpt-tokenizer": "^2.0.0"
   },
   "peerDependenciesMeta": {
     "@astryxdesign/core": {
@@ -82,6 +87,7 @@
   "devDependencies": {
     "@astryxdesign/core": "*",
     "@astryxdesign/lab": "*",
-    "@astryxdesign/theme-neutral": "*"
+    "@astryxdesign/theme-neutral": "*",
+    "gpt-tokenizer": "^2.0.0"
   }
 }
