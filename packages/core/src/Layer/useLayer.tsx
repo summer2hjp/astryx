@@ -23,6 +23,7 @@ import React, {
 } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import type {StyleXStyles} from '@stylexjs/stylex';
+import {addAnchorName, removeAnchorName} from './anchorName';
 import {typographyVars} from '../theme/tokens.stylex';
 
 const styles = stylex.create({
@@ -324,16 +325,14 @@ export function useLayer(
   const ref: RefCallback<HTMLElement> | undefined =
     mode === 'context'
       ? (el: HTMLElement | null) => {
-          // Cleanup previous element
-          if (triggerRef.current) {
-            (
-              triggerRef.current.style as unknown as Record<string, string>
-            ).anchorName = '';
+          // Remove only THIS layer's anchor name from the previous element so
+          // other layers sharing the same trigger keep their anchors.
+          if (triggerRef.current && triggerRef.current !== el) {
+            removeAnchorName(triggerRef.current, anchorId);
           }
 
           if (el) {
-            (el.style as unknown as Record<string, string>).anchorName =
-              anchorId;
+            addAnchorName(el, anchorId);
           }
 
           triggerRef.current = el;
